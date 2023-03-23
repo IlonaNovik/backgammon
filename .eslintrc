@@ -1,0 +1,128 @@
+{
+  "env": {
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "globals": {},
+  "plugins": ["react", "@typescript-eslint", "simple-import-sort", "import", "react-hooks", "import"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "react": {
+      "version": "detect"
+    },
+    "import/ignore": ["node_modules/@tanstack/react-table"],
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["src", "node_modules"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "typescript": {}
+    }
+  },
+  "rules": {
+    "indent": [
+      "off",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/no-unresolved": "error",
+    "import/no-named-as-default-member": "off",
+    "import/named": "off",
+    "import/namespace": "error",
+    "import/default": "error",
+    "import/export": "error",
+    "quotes": ["error", "single"],
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-empty-pattern": "off",
+    "no-restricted-globals": "off",
+    "space-before-blocks": "error",
+    "space-unary-ops": "error",
+    "space-infix-ops": "error",
+    "space-before-function-paren": "off",
+    "space-in-parens": "error",
+    "keyword-spacing": "error",
+    "object-curly-spacing": ["error", "never"],
+    "no-multi-spaces": "error",
+    "semi": [2, "always"],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      {
+        "exceptAfterSingleLine": true
+      }
+    ],
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never",
+        "beforeClosing": "never"
+      }
+    ],
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/display-name": "off"
+  },
+  "overrides": [
+    // override "simple-import-sort" config
+    {
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              // Packages `react` related packages come first.
+              ["^react", "^@?\\w"],
+              // Internal packages.
+              ["^(^components|^assets|^helpers|^routing|^store|^views)(/.*|$)"],
+              // Side effect imports.
+              ["^\\u0000"],
+              // Parent imports. Put `..` last.
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              // Other relative imports. Put same-folder imports and `.` last.
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              // Style imports.
+              ["^.+\\.?(css)$"]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
