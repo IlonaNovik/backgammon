@@ -1,0 +1,35 @@
+.form-item {
+  @apply relative mb-6 flex flex-col gap-1;
+}
+
+.label-required::before {
+  display: inline-block;
+  margin-inline-end: 4px;
+  color: #ff4d4f;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+  line-height: 1;
+  content: '*';
+}
+
+.form-item label {
+  margin: 0;
+  padding: 0 0 8px;
+  white-space: initial;
+  text-align: start;
+  display: inline-block;
+  flex-grow: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-transform: capitalize;
+}
+
+.antd-input-error-message {
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  color: #ff4d4f;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+}
