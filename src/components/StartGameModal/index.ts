@@ -1,1 +1,0 @@
-export {StartGameModal} from './StartGameModal';

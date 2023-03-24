@@ -1,10 +1,10 @@
 import {useForm} from 'react-hook-form';
 
-import {appState} from '@/AppState';
 import {PlayerForm} from '@/components/PlayerForm';
 import {Button} from '@/components/ui/Button';
 import {Modal} from '@/components/ui/Modal';
 import {StartGameForm} from '@/helpers/types';
+import {gameState} from '@/store/appState';
 
 interface StartGameModalProps {
   isOpen: boolean;
@@ -20,7 +20,7 @@ export const StartGameModal: React.FC<StartGameModalProps> = ({isOpen, setIsOpen
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={'Start new game'}>
       <form
         onSubmit={form.handleSubmit((payload) => {
-          appState.submitPlayersAndStartGame(payload);
+          gameState.startGame(payload);
           setIsOpen(false);
         })}
       >

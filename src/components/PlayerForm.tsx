@@ -1,7 +1,6 @@
 import {Controller, UseFormReturn} from 'react-hook-form';
 import classNames from 'classnames';
 
-import {StartGameForm} from './StartGameModal/StartGameModal';
 import {Input} from './ui/Input';
 import {Checker} from './Checker';
 
@@ -17,6 +16,7 @@ import avatar9 from '@/assets/images/avatars/9.png';
 import avatar10 from '@/assets/images/avatars/10.png';
 import avatar11 from '@/assets/images/avatars/11.png';
 import avatar12 from '@/assets/images/avatars/12.png';
+import {StartGameForm} from '@/helpers/types';
 
 const avatars = [
   avatar1,
@@ -56,7 +56,7 @@ export const PlayerForm: React.FC<PlayerFormProps> = ({name, form}) => {
         <Checker type={name === 'player1' ? 'red' : 'blue'} />
         <Input
           required
-          label={name.split('-').join(' ')}
+          label={name}
           placeholder="Enter name"
           {...register(`${name}.name`, {required: true})}
           error={errors[name]?.name}

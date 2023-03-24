@@ -1,30 +1,44 @@
-export const GameBoard: React.FC = () => {
+import {observer} from 'mobx-react-lite';
+
+import {GameBoardSection} from './GameBoardSections';
+
+import {gameState} from '@/store/appState';
+
+export const GameBoard: React.FC = observer(() => {
+  const {player1, player2} = gameState.game!;
+  const {checkers: player1Checkers} = player1;
+  const {checkers: player2Checkers} = player2;
+
   return (
     <div className="flex">
       <div className="flex">
         <div className="board">
-          <div className="top-left">
-            {[...Array(6).keys()].map((item) => (
-              <div id={`top-left-${item}`} key={item} className="triangle triangle-top" />
-            ))}
-          </div>
-          <div className="bottom-left">
-            {[...Array(6).keys()].map((item) => (
-              <div id={`bottom-left-${item}`} key={item} className="triangle triangle-bottom" />
-            ))}
-          </div>
+          <GameBoardSection
+            xAxis="top"
+            yAxis="left"
+            player1Checkers={player1Checkers ?? []}
+            player2Checkers={player2Checkers ?? []}
+          />
+          <GameBoardSection
+            xAxis="bottom"
+            yAxis="left"
+            player1Checkers={player1Checkers ?? []}
+            player2Checkers={player2Checkers ?? []}
+          />
         </div>
         <div className="board">
-          <div className="top-right">
-            {[...Array(6).keys()].map((item) => (
-              <div id={`top-right-${item}`} key={item} className="triangle triangle-top" />
-            ))}
-          </div>
-          <div className="bottom-right">
-            {[...Array(6).keys()].map((item) => (
-              <div id={`bottom-right-${item}`} key={item} className="triangle triangle-bottom" />
-            ))}
-          </div>
+          <GameBoardSection
+            xAxis="top"
+            yAxis="right"
+            player1Checkers={player1Checkers ?? []}
+            player2Checkers={player2Checkers ?? []}
+          />
+          <GameBoardSection
+            xAxis="bottom"
+            yAxis="right"
+            player1Checkers={player1Checkers ?? []}
+            player2Checkers={player2Checkers ?? []}
+          />
         </div>
       </div>
       <div className="board border-l-0 w-24 flex flex-col justify-between">
@@ -41,4 +55,4 @@ export const GameBoard: React.FC = () => {
       </div>
     </div>
   );
-};
+});

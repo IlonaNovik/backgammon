@@ -1,27 +1,25 @@
 import {useState} from 'react';
 
-import {PlayerCard} from '../ui/PlayerCard';
+import {PlayerCard} from './ui/PlayerCard';
 
-import {appState} from '@/AppState';
-import avatar1 from '@/assets/images/avatars/1.png';
-import avatar2 from '@/assets/images/avatars/2.png';
 import dice from '@/assets/images/dice.png';
 import {StartGameModal} from '@/components/StartGameModal';
 import {Button} from '@/components/ui/Button';
+import {gameState} from '@/store/appState';
 
 export const GamePanel: React.FC = () => {
   const [isModalOpen, openModal] = useState(false);
 
-  return appState.isGame ? (
+  return gameState.game ? (
     <div className="bg-yellow-dark w-full flex flex-col justify-between p-6">
-      <PlayerCard player={{id: 1, name: 'Maayan', avatar: avatar2}} isActive={true} />
+      <PlayerCard player={gameState.game.player1} isActive={true} />
       <div className="flex flex-col gap-2">
         <Button type="blue">Restart</Button>
-        <Button type="red" onClick={() => appState.setGame(false)}>
+        <Button type="red" onClick={() => gameState.endGame()}>
           Exit
         </Button>
       </div>
-      <PlayerCard player={{id: 2, name: 'Ilona', avatar: avatar1}} isActive={false} />
+      <PlayerCard player={gameState.game.player2} isActive={false} />
     </div>
   ) : (
     <>
