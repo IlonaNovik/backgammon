@@ -1,4 +1,6 @@
 @import url('./assets/styles/board.css');
+@import url('./assets/styles/checker.css');
+@import url('./assets/styles/form.css');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;

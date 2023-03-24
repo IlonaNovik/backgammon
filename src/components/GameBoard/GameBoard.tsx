@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 export const GameBoard: React.FC = () => {
   return (
     <div className="flex">
