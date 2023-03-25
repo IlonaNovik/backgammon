@@ -1,4 +1,4 @@
-import {observable} from 'mobx';
+import {action, makeObservable, observable} from 'mobx';
 
 import {Player} from './Player';
 
@@ -13,12 +13,14 @@ export class Game {
   currentPlayer: Player;
 
   constructor(player1: Player, player2: Player) {
+    makeObservable(this);
     this.player1 = player1;
     this.player2 = player2;
     this.currentPlayer = player1;
     this.initCheckers();
   }
 
+  @action
   public switchPlayer = () => {
     this.currentPlayer = this.currentPlayer === this.player1 ? this.player2 : this.player1;
   };
@@ -26,5 +28,11 @@ export class Game {
   public initCheckers = () => {
     this.player1.initCheckers();
     this.player2.initCheckers();
+    this.rollDice();
+  };
+
+  @action
+  public rollDice = () => {
+    this.currentPlayer.rollDice();
   };
 }

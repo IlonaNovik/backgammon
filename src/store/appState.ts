@@ -19,14 +19,15 @@ class GameState {
   }
 
   public startGame = ({player1, player2}: StartGameForm) => {
-    this.game = new Game(
-      new Player(player1.id, player1.name, player1.avatar),
-      new Player(player2.id, player2.name, player2.avatar)
-    );
+    this.game = new Game(new Player(1, player1.name, player1.avatar), new Player(2, player2.name, player2.avatar));
   };
 
   public endGame = () => {
     this.game = undefined;
+  };
+
+  public restartGame = () => {
+    this.game?.initCheckers();
   };
 }
 

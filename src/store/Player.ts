@@ -1,21 +1,38 @@
+import {action, makeObservable, observable} from 'mobx';
+
 import {Checker} from './Checker';
+
+import {Dice} from '@/helpers/types';
 
 export class Player {
   public id: number;
   public name: string;
   public avatar: string;
+
+  @observable
   public checkers: Checker[] | undefined;
 
+  @observable
+  public dice: [Dice, Dice] | undefined;
+
   constructor(id: number, name: string, avatar: string) {
+    makeObservable(this);
+
     this.id = id;
     this.name = name;
     this.avatar = avatar;
   }
 
+  @action
+  public rollDice = () => {
+    this.dice = [(Math.floor(Math.random() * 6) + 1) as Dice, (Math.floor(Math.random() * 6) + 1) as Dice];
+  };
+
   public getCheckers = () => {
     return this.checkers;
   };
 
+  @action
   public initCheckers = () => {
     if (this.id === 1) {
       this.checkers = [
