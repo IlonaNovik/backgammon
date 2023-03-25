@@ -7,8 +7,8 @@ import {GameBoardSection} from './GameBoardSections';
 import {gameState} from '@/store/appState';
 
 export const GameBoard: React.FC = observer(() => {
-  const player1Checkers = gameState.game?.player1.checkers;
-  const player2Checkers = gameState.game?.player2.checkers;
+  const player1Checkers = gameState.game?.red.checkersOnBoard;
+  const player2Checkers = gameState.game?.blue.checkersOnBoard;
 
   return (
     <div className="flex">
@@ -51,13 +51,13 @@ export const GameBoard: React.FC = observer(() => {
       </div>
       <div className="board border-l-0 w-24 flex flex-col justify-between">
         <div>
-          {[...Array(15).keys()].map((item) => (
-            <div key={item} className="h-4 border-b-2 border-black bg-blue" />
+          {gameState.game?.red.checkersHome?.map((item) => (
+            <div key={item.id} className="h-4 border-b-2 border-black bg-blue" />
           ))}
         </div>
         <div>
-          {[...Array(15).keys()].map((item) => (
-            <div key={item} className="h-4 border-t-2 border-black bg-red" />
+          {gameState.game?.blue.checkersHome?.map((item) => (
+            <div key={item.id} className="h-4 border-t-2 border-black bg-red" />
           ))}
         </div>
       </div>

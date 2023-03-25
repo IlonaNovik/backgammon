@@ -12,7 +12,17 @@
   @apply bg-blue border-blue-dark;
 }
 
-.hide {
-  transition: 0.01s;
-  transform: translateX(-9999px);
+.grabbable {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  /* transition: 0.01s;
+  transform: translateX(-9999px); */
+}
+
+.grabbable:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }

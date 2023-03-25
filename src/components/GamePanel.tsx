@@ -14,9 +14,9 @@ export const GamePanel: React.FC = observer(() => {
   return gameState.game ? (
     <div className="bg-yellow-dark w-full flex flex-col justify-between p-6">
       <PlayerCard
-        player={gameState.game.player2}
-        isActive={gameState.game.currentPlayer.id === 2}
-        rollDice={() => gameState.game?.player2.rollDice()}
+        player={gameState.game.blue}
+        isActive={gameState.game.currentPlayer.type === 'blue'}
+        rollDice={() => gameState.game?.blue.rollDice()}
       />
       <div className="flex flex-col gap-2">
         <Button type="blue" onClick={() => gameState.restartGame()}>
@@ -27,9 +27,9 @@ export const GamePanel: React.FC = observer(() => {
         </Button>
       </div>
       <PlayerCard
-        player={gameState.game.player1}
-        isActive={gameState.game.currentPlayer.id === 1}
-        rollDice={() => gameState.game?.player1.rollDice()}
+        player={gameState.game.red}
+        isActive={gameState.game.currentPlayer.type === 'red'}
+        rollDice={() => gameState.game?.red.rollDice()}
       />
     </div>
   ) : (

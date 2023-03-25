@@ -1,32 +1,46 @@
 import {useState} from 'react';
 import classNames from 'classnames';
 
+import {Checker as CheckerClass} from '@/store/Checker';
+
 interface CheckerProps {
-  type: 'red' | 'blue';
-  inGame?: boolean;
+  checker: CheckerClass;
+  isOnTop?: boolean;
   className?: string;
   style?: React.CSSProperties;
+  setDragging?: (checker: CheckerClass | undefined) => void;
 }
 
-export const Checker: React.FC<CheckerProps> = ({type = 'red', inGame, className, style}) => {
-  const [hide, setHide] = useState(false);
+export const Checker: React.FC<CheckerProps> = ({
+  checker,
+  isOnTop = false,
+  className,
+  style,
+  setDragging: setDraggingChecker,
+}) => {
+  const {color, canMove} = checker;
+  const [dragging, setDragging] = useState(false);
+
+  const classes = classNames(
+    'checker absolute -left-[2.1vw]',
+    color === 'red' ? 'checker-red' : 'checker-blue',
+    dragging && 'grabbable',
+    isOnTop && canMove && 'cursor-grab',
+    className
+  );
 
   return (
     <div
       style={style}
-      className={classNames(
-        'checker',
-        type === 'red' ? 'checker-red' : 'checker-blue',
-        inGame && 'absolute -left-[2.1vw]',
-        hide && 'hide',
-        className
-      )}
-      draggable={inGame}
+      className={classes}
+      draggable={isOnTop && canMove}
       onDragStart={() => {
-        setHide(true);
+        setDragging(true);
+        setDraggingChecker?.(checker);
       }}
       onDragEnd={() => {
-        setHide(false);
+        setDragging(false);
+        setDraggingChecker?.(undefined);
       }}
     />
   );

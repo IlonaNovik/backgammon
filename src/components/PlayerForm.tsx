@@ -2,7 +2,6 @@ import {Controller, UseFormReturn} from 'react-hook-form';
 import classNames from 'classnames';
 
 import {Input} from './ui/Input';
-import {Checker} from './Checker';
 
 import avatar1 from '@/assets/images/avatars/1.png';
 import avatar2 from '@/assets/images/avatars/2.png';
@@ -35,7 +34,7 @@ const avatars = [
 
 interface PlayerFormProps {
   form: UseFormReturn<StartGameForm>;
-  name: 'player1' | 'player2';
+  name: 'red' | 'blue';
 }
 
 export const PlayerForm: React.FC<PlayerFormProps> = ({name, form}) => {
@@ -47,13 +46,10 @@ export const PlayerForm: React.FC<PlayerFormProps> = ({name, form}) => {
 
   return (
     <div
-      className={classNames(
-        'pb-6 flex flex-col gap-2',
-        name === 'player1' ? 'pr-4 border-r border-yellow-dark' : 'pl-4'
-      )}
+      className={classNames('pb-6 flex flex-col gap-2', name === 'red' ? 'pr-4 border-r border-yellow-dark' : 'pl-4')}
     >
       <div className="flex gap-4">
-        <Checker type={name === 'player1' ? 'red' : 'blue'} />
+        <div className={name === 'blue' ? 'checker checker-blue' : 'checker checker-red'} />
         <Input
           required
           label={name}
@@ -75,9 +71,9 @@ export const PlayerForm: React.FC<PlayerFormProps> = ({name, form}) => {
                 src={avatar}
                 className={classNames(
                   'rounded-full',
-                  value === avatar && name === 'player1'
+                  value === avatar && name === 'red'
                     ? 'ring-4 ring-red'
-                    : value === avatar && name === 'player2'
+                    : value === avatar && name === 'blue'
                     ? 'ring-4 ring-blue'
                     : ''
                 )}

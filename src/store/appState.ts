@@ -1,4 +1,4 @@
-import {makeObservable, observable} from 'mobx';
+import {action, makeObservable, observable} from 'mobx';
 
 import {Game} from './Game';
 import {Player} from './Player';
@@ -12,20 +12,23 @@ class GameState {
   constructor() {
     makeObservable(this);
 
+    // Initialize a game with default players for development purposes
     this.game = new Game(
-      new Player(1, 'Player 1', 'https://i.pravatar.cc/150?img=1'),
-      new Player(2, 'Player 2', 'https://i.pravatar.cc/150?img=2')
+      new Player('red', 'Player 1', 'https://i.pravatar.cc/150?img=1'),
+      new Player('blue', 'Player 2', 'https://i.pravatar.cc/150?img=2')
     );
   }
 
-  public startGame = ({player1, player2}: StartGameForm) => {
-    this.game = new Game(new Player(1, player1.name, player1.avatar), new Player(2, player2.name, player2.avatar));
+  public startGame = ({red, blue}: StartGameForm) => {
+    this.game = new Game(new Player('red', red.name, red.avatar), new Player('blue', blue.name, blue.avatar));
   };
 
+  @action
   public endGame = () => {
     this.game = undefined;
   };
 
+  @action
   public restartGame = () => {
     this.game?.initCheckers();
   };

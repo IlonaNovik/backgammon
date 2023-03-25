@@ -12,8 +12,18 @@ interface PlayerCardProps {
   rollDice?: () => void;
 }
 
-export const PlayerCard: React.FC<PlayerCardProps> = ({player: {id, name, avatar}, isActive, rollDice}) => (
-  <div className={classNames('flex flex-col gap-4', id === 1 && 'flex-col-reverse')}>
+export const PlayerCard: React.FC<PlayerCardProps> = ({player: {type, name, avatar}, isActive, rollDice}) => (
+  <div className="flex flex-col gap-4">
+    <Button
+      type={type}
+      outlined
+      icon={<DiceIcon />}
+      onClick={rollDice}
+      className={type === 'red' && isActive ? 'visible' : type === 'red' && !isActive ? 'invisible' : 'hidden'}
+    >
+      Roll dice
+    </Button>
+
     <div
       className={classNames(
         'flex flex-col items-center gap-2 shadow-xl bg-yellow rounded-sm py-6 px-2',
@@ -23,16 +33,20 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({player: {id, name, avatar
       <div
         className={classNames(
           'bg-cover bg-center w-24 h-24 rounded-full border-[8px]',
-          id === 1 ? 'border-red' : 'border-blue'
+          type === 'red' ? 'border-red' : 'border-blue'
         )}
         style={{backgroundImage: `url(${avatar})`}}
       />
       <h2 className="text-xl text-center uppercase">{name}</h2>
     </div>
-    {isActive && (
-      <Button type={id === 1 ? 'red' : 'blue'} outlined icon={<DiceIcon />} onClick={rollDice}>
-        Roll dice
-      </Button>
-    )}
+    <Button
+      type={type}
+      outlined
+      icon={<DiceIcon />}
+      onClick={rollDice}
+      className={type === 'blue' && isActive ? 'visible' : type === 'blue' && !isActive ? 'invisible' : 'hidden'}
+    >
+      Roll dice
+    </Button>
   </div>
 );

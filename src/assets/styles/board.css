@@ -35,10 +35,10 @@
   @apply border-t-red-light;
 }
 
-.triangle-bottom:nth-of-type(even) {
+.triangle-bottom:nth-of-type(odd) {
   @apply border-b-blue-light;
 }
 
-.triangle-bottom:nth-of-type(odd) {
+.triangle-bottom:nth-of-type(even) {
   @apply border-b-red-light;
 }

@@ -25,8 +25,8 @@ export const StartGameModal: React.FC<StartGameModalProps> = ({isOpen, setIsOpen
         })}
       >
         <div className="grid grid-cols-2 mt-4">
-          <PlayerForm name="player1" form={form} />
-          <PlayerForm name="player2" form={form} />
+          <PlayerForm name="red" form={form} />
+          <PlayerForm name="blue" form={form} />
         </div>
         <div className="flex justify-center mt-6">
           <Button htmlType="submit" type="red" className="w-32">

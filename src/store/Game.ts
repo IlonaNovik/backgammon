@@ -4,30 +4,31 @@ import {Player} from './Player';
 
 export class Game {
   @observable
-  player1: Player;
+  red: Player;
 
   @observable
-  player2: Player;
+  blue: Player;
 
   @observable
   currentPlayer: Player;
 
-  constructor(player1: Player, player2: Player) {
+  constructor(red: Player, blue: Player) {
     makeObservable(this);
-    this.player1 = player1;
-    this.player2 = player2;
-    this.currentPlayer = player1;
+
+    this.red = red;
+    this.blue = blue;
+    this.currentPlayer = Math.random() > 0.5 ? red : blue;
     this.initCheckers();
   }
 
   @action
   public switchPlayer = () => {
-    this.currentPlayer = this.currentPlayer === this.player1 ? this.player2 : this.player1;
+    this.currentPlayer = this.currentPlayer === this.red ? this.blue : this.red;
   };
 
   public initCheckers = () => {
-    this.player1.initCheckers();
-    this.player2.initCheckers();
+    this.red.initCheckers();
+    this.blue.initCheckers();
     this.rollDice();
   };
 
