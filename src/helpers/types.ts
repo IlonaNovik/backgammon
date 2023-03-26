@@ -6,3 +6,8 @@ export interface StartGameForm {
   red: Player;
   blue: Player;
 }
+
+export type CheckerPosition = {
+  boardPosition: number;
+  itemPosition: number;
+};

@@ -1,7 +1,6 @@
 .checker {
-  @apply w-16 h-16 rounded-full border-8;
+  @apply w-16 h-16 rounded-full border-8 absolute left-[50%] transform -translate-x-1/2;
   box-shadow: inset 0px 0px 10px 0px #000;
-  transform: translate(0, 0);
 }
 
 .checker-red {

@@ -22,13 +22,12 @@ export const Checker: React.FC<CheckerProps> = ({
   const [dragging, setDragging] = useState(false);
 
   const classes = classNames(
-    'checker absolute -left-[2.1vw]',
+    'checker',
     color === 'red' ? 'checker-red' : 'checker-blue',
     dragging && 'grabbable',
     isOnTop && canMove && 'cursor-grab',
     className
   );
-
   return (
     <div
       style={style}

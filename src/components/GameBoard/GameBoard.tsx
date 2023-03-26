@@ -7,8 +7,9 @@ import {GameBoardSection} from './GameBoardSections';
 import {gameState} from '@/store/appState';
 
 export const GameBoard: React.FC = observer(() => {
-  const player1Checkers = gameState.game?.red.checkersOnBoard;
-  const player2Checkers = gameState.game?.blue.checkersOnBoard;
+  const playerRedCheckers = gameState.game?.red.checkersOnBoard;
+  const playerBlueCheckers = gameState.game?.blue.checkersOnBoard;
+  const currentPlayer = gameState.game?.currentPlayer;
 
   return (
     <div className="flex">
@@ -17,30 +18,34 @@ export const GameBoard: React.FC = observer(() => {
           <GameBoardSection
             xAxis="top"
             yAxis="left"
-            player1Checkers={player1Checkers ?? []}
-            player2Checkers={player2Checkers ?? []}
+            playerRedCheckers={playerRedCheckers ?? []}
+            playerBlueCheckers={playerBlueCheckers ?? []}
+            currentPlayer={currentPlayer}
           />
           <GameBoardSection
             xAxis="bottom"
             yAxis="left"
-            player1Checkers={player1Checkers ?? []}
-            player2Checkers={player2Checkers ?? []}
+            playerRedCheckers={playerRedCheckers ?? []}
+            playerBlueCheckers={playerBlueCheckers ?? []}
+            currentPlayer={currentPlayer}
           />
         </div>
         <div className="board relative">
           <GameBoardSection
             xAxis="top"
             yAxis="right"
-            player1Checkers={player1Checkers ?? []}
-            player2Checkers={player2Checkers ?? []}
+            playerRedCheckers={playerRedCheckers ?? []}
+            playerBlueCheckers={playerBlueCheckers ?? []}
+            currentPlayer={currentPlayer}
           />
           <GameBoardSection
             xAxis="bottom"
             yAxis="right"
-            player1Checkers={player1Checkers ?? []}
-            player2Checkers={player2Checkers ?? []}
+            playerRedCheckers={playerRedCheckers ?? []}
+            playerBlueCheckers={playerBlueCheckers ?? []}
+            currentPlayer={currentPlayer}
           />
-          {gameState.game && (
+          {gameState.game && gameState.game.currentPlayer.dice && (
             <div className="absolute top-[calc(50%-2rem)] left-[calc(50%-4rem)] flex ">
               <Dice roll={gameState.game?.currentPlayer.dice?.[0]} />
               <Dice roll={gameState.game?.currentPlayer.dice?.[1]} />

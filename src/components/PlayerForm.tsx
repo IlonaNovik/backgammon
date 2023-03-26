@@ -49,7 +49,9 @@ export const PlayerForm: React.FC<PlayerFormProps> = ({name, form}) => {
       className={classNames('pb-6 flex flex-col gap-2', name === 'red' ? 'pr-4 border-r border-yellow-dark' : 'pl-4')}
     >
       <div className="flex gap-4">
-        <div className={name === 'blue' ? 'checker checker-blue' : 'checker checker-red'} />
+        <div
+          className={classNames('w-16 h-16 rounded-full border-8', name === 'blue' ? 'checker-blue' : 'checker-red')}
+        />
         <Input
           required
           label={name}

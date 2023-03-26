@@ -42,3 +42,7 @@
 .triangle-bottom:nth-of-type(even) {
   @apply border-b-red-light;
 }
+
+.placeholder {
+  @apply h-16 w-16 absolute z-10 rounded-full left-[50%] transform -translate-x-1/2;
+}

@@ -46,45 +46,45 @@ export class Player {
   public initCheckers = () => {
     if (this.type === 'red') {
       this.checkersOnBoard = [
-        new Checker(1, this, {xAxis: 'top', yAxis: 'right', position: 5}, 'red'),
-        new Checker(2, this, {xAxis: 'top', yAxis: 'right', position: 5}, 'red'),
+        new Checker(`player-${this.type}-${1}`, 1, 'red'),
+        new Checker(`player-${this.type}-${2}`, 1, 'red'),
 
-        new Checker(3, this, {xAxis: 'top', yAxis: 'left', position: 0}, 'red'),
-        new Checker(4, this, {xAxis: 'top', yAxis: 'left', position: 0}, 'red'),
-        new Checker(5, this, {xAxis: 'top', yAxis: 'left', position: 0}, 'red'),
-        new Checker(6, this, {xAxis: 'top', yAxis: 'left', position: 0}, 'red'),
-        new Checker(7, this, {xAxis: 'top', yAxis: 'left', position: 0}, 'red'),
+        new Checker(`player-${this.type}-${3}`, 12, 'red'),
+        new Checker(`player-${this.type}-${4}`, 12, 'red'),
+        new Checker(`player-${this.type}-${5}`, 12, 'red'),
+        new Checker(`player-${this.type}-${6}`, 12, 'red'),
+        new Checker(`player-${this.type}-${7}`, 12, 'red'),
 
-        new Checker(8, this, {xAxis: 'bottom', yAxis: 'left', position: 4}, 'red'),
-        new Checker(9, this, {xAxis: 'bottom', yAxis: 'left', position: 4}, 'red'),
-        new Checker(10, this, {xAxis: 'bottom', yAxis: 'left', position: 4}, 'red'),
+        new Checker(`player-${this.type}-${8}`, 17, 'red'),
+        new Checker(`player-${this.type}-${9}`, 17, 'red'),
+        new Checker(`player-${this.type}-${10}`, 17, 'red'),
 
-        new Checker(11, this, {xAxis: 'bottom', yAxis: 'right', position: 0}, 'red'),
-        new Checker(12, this, {xAxis: 'bottom', yAxis: 'right', position: 0}, 'red'),
-        new Checker(13, this, {xAxis: 'bottom', yAxis: 'right', position: 0}, 'red'),
-        new Checker(14, this, {xAxis: 'bottom', yAxis: 'right', position: 0}, 'red'),
-        new Checker(15, this, {xAxis: 'bottom', yAxis: 'right', position: 0}, 'red'),
+        new Checker(`player-${this.type}-${11}`, 19, 'red'),
+        new Checker(`player-${this.type}-${12}`, 19, 'red'),
+        new Checker(`player-${this.type}-${13}`, 19, 'red'),
+        new Checker(`player-${this.type}-${14}`, 19, 'red'),
+        new Checker(`player-${this.type}-${15}`, 19, 'red'),
       ];
     } else {
       this.checkersOnBoard = [
-        new Checker(1, this, {xAxis: 'bottom', yAxis: 'right', position: 5}, 'blue'),
-        new Checker(2, this, {xAxis: 'bottom', yAxis: 'right', position: 5}, 'blue'),
+        new Checker(`player-${this.type}-${1}`, 24, 'blue'),
+        new Checker(`player-${this.type}-${2}`, 24, 'blue'),
 
-        new Checker(3, this, {xAxis: 'bottom', yAxis: 'left', position: 0}, 'blue'),
-        new Checker(4, this, {xAxis: 'bottom', yAxis: 'left', position: 0}, 'blue'),
-        new Checker(5, this, {xAxis: 'bottom', yAxis: 'left', position: 0}, 'blue'),
-        new Checker(6, this, {xAxis: 'bottom', yAxis: 'left', position: 0}, 'blue'),
-        new Checker(7, this, {xAxis: 'bottom', yAxis: 'left', position: 0}, 'blue'),
+        new Checker(`player-${this.type}-${3}`, 13, 'blue'),
+        new Checker(`player-${this.type}-${4}`, 13, 'blue'),
+        new Checker(`player-${this.type}-${5}`, 13, 'blue'),
+        new Checker(`player-${this.type}-${6}`, 13, 'blue'),
+        new Checker(`player-${this.type}-${7}`, 13, 'blue'),
 
-        new Checker(8, this, {xAxis: 'top', yAxis: 'left', position: 4}, 'blue'),
-        new Checker(9, this, {xAxis: 'top', yAxis: 'left', position: 4}, 'blue'),
-        new Checker(10, this, {xAxis: 'top', yAxis: 'left', position: 4}, 'blue'),
+        new Checker(`player-${this.type}-${8}`, 8, 'blue'),
+        new Checker(`player-${this.type}-${9}`, 8, 'blue'),
+        new Checker(`player-${this.type}-${10}`, 8, 'blue'),
 
-        new Checker(11, this, {xAxis: 'top', yAxis: 'right', position: 0}, 'blue'),
-        new Checker(12, this, {xAxis: 'top', yAxis: 'right', position: 0}, 'blue'),
-        new Checker(13, this, {xAxis: 'top', yAxis: 'right', position: 0}, 'blue'),
-        new Checker(14, this, {xAxis: 'top', yAxis: 'right', position: 0}, 'blue'),
-        new Checker(15, this, {xAxis: 'top', yAxis: 'right', position: 0}, 'blue'),
+        new Checker(`player-${this.type}-${11}`, 6, 'blue'),
+        new Checker(`player-${this.type}-${12}`, 6, 'blue'),
+        new Checker(`player-${this.type}-${13}`, 6, 'blue'),
+        new Checker(`player-${this.type}-${14}`, 6, 'blue'),
+        new Checker(`player-${this.type}-${15}`, 6, 'blue'),
       ];
     }
   };

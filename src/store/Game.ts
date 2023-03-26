@@ -29,7 +29,6 @@ export class Game {
   public initCheckers = () => {
     this.red.initCheckers();
     this.blue.initCheckers();
-    this.rollDice();
   };
 
   @action

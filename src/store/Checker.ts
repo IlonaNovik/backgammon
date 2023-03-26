@@ -1,24 +1,13 @@
 import {action, makeObservable, observable} from 'mobx';
 
-import {Player} from './Player';
-
-export interface CheckerPosition {
-  xAxis: 'top' | 'bottom';
-  yAxis: 'left' | 'right';
-  position: number;
-}
-
 export class Checker {
-  public id: `player-${number}-${number}`;
-
-  @observable
-  public player: Player;
+  public id: `player-${'red' | 'blue'}-${number}`;
 
   @observable
   public color: 'red' | 'blue';
 
   @observable
-  public position: CheckerPosition;
+  public position: number;
 
   @observable
   public isOnBar: boolean = false;
@@ -32,11 +21,10 @@ export class Checker {
   @observable
   public canMove: boolean = false;
 
-  constructor(id: number, player: Player, position: CheckerPosition, color: 'red' | 'blue') {
+  constructor(id: `player-${'red' | 'blue'}-${number}`, position: number, color: 'red' | 'blue') {
     makeObservable(this);
 
-    this.id = `player-${player.id}-${id}`;
-    this.player = player;
+    this.id = id;
     this.position = position;
     this.color = color;
   }
@@ -47,7 +35,7 @@ export class Checker {
   };
 
   @action
-  public setPosition = (position: CheckerPosition) => {
+  public setPosition = (position: number) => {
     this.position = position;
   };
 }
